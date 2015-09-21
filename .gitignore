@@ -3,6 +3,7 @@ venv/
 
 # User specific
 src/test.py
+*.log
 
 # --------------------------------------------------------------------------------
 # virtual env git ignore
