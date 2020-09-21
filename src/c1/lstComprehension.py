@@ -13,4 +13,13 @@ def tuple_f():
     pass
 
 
+def zipWithIndex():
+    lst: List[str] = ['Alice', 'Bob', 'Charlie']
+    enum_lst: List[Tuple[int, str]] = [(i, name) for i, name in enumerate(lst)]
+    pass
+
+if __name__ == '__main__':
+    print('start')
+    pass
+
 pass
