@@ -4,22 +4,30 @@ from builtins import print
 from typing import Dict
 
 
-def post(url: str, req_json: dict) -> dict:
+def post(url: str, req_json: Dict[str,]) -> Dict[str,]:
     json_dump = json.dumps(req_json, sort_keys=True, ensure_ascii=False, indent=2).encode("utf-8")
     headers: Dict[str, str] = {"Content-Type": "application/json"}
     request = urllib.request.Request(url, data=json_dump, headers=headers, method="POST")
-    with urllib.request.urlopen(request) as response:
-        response_body: str = response.read().decode("utf-8")
-        result_dict: dict = json.loads(response_body)
-        return result_dict
+    try:
+        with urllib.request.urlopen(request) as response:
+            response_body: str = response.read().decode("utf-8")
+            result_dict: Dict[str,] = json.loads(response_body)
+            return result_dict
+    except Exception as e:
+        print(e)
+        return None
 
 
-def get(url: str) -> dict:
+def get(url: str) -> Dict[str,]:
     request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as response:
-        response_body: str = response.read().decode("utf-8")
-        result_dict: dict = json.loads(response_body)
-        return result_dict
+    try:
+        with urllib.request.urlopen(request) as response:
+            response_body: str = response.read().decode("utf-8")
+            result_dict: Dict[str,] = json.loads(response_body)
+            return result_dict
+    except Exception as e:
+        print(e)
+        return None
 
 
 def generateTestJson() -> Dict[str, object]:
