@@ -15,10 +15,15 @@ def log_init():
     lg.basicConfig(filename='logfile/logger.log', level=DEBUG, format=formatter)
 
 
-cnt: Series = pd.Series([10, 20, 30, 50, 80, 130])
-v2: ndarray = cnt.values
+def pn_series():
+    cnt: Series = pd.Series([10, 20, 30, 50, 80, 130])
+    v2: ndarray = cnt.values
+    pass
 
 
+'''
+TODO: implement
+'''
 def csvload():
     pass
 
@@ -30,9 +35,3 @@ if __name__ == '__main__':
 
 pass
 
-if __name__ == '__main__':
-    log_init()
-    print('start')
-    pass
-
-pass
