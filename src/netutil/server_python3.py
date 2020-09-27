@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import os
 import http.server as s
 import json
-from urllib.parse import urlparse
 from urllib.parse import parse_qs
+from urllib.parse import urlparse
 
 
 class MyHandler(s.BaseHTTPRequestHandler):
@@ -28,7 +27,10 @@ class MyHandler(s.BaseHTTPRequestHandler):
                 pass
             except Exception as e:
                 print(e)
-                self.send_response(500)
+                try:
+                    self.send_response(500)
+                except Exception as e2:
+                    print(e2)
         # response
         if method in ["post", "get"]:
             try:
@@ -47,8 +49,10 @@ class MyHandler(s.BaseHTTPRequestHandler):
             pass
         else:
             print("not support method. {}".format(method))
-            self.send_error(500)
-            pass
+            try:
+                self.send_response(500)
+            except Exception as e2:
+                print(e2)
 
     @staticmethod
     def make_response_data(http_method: str) -> dict:
