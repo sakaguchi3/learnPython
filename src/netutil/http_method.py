@@ -6,7 +6,13 @@ from typing import Dict
 
 def post(url: str, req_json: Dict[str,]) -> Dict[str,]:
     json_dump = json.dumps(req_json, sort_keys=True, ensure_ascii=False, indent=2).encode("utf-8")
-    headers: Dict[str, str] = {"Content-Type": "application/json"}
+    headers: Dict[str, str] = {
+        "Content-Type": "application/json",
+        #        "Authorization": "Basic c2FtcGxlLXVzZXI6c2FtcGxlLXBhc3N3b3Jk"  # sample-user:sample-password をbase64encode
+        #        "Authorization": "token xxxxx"  # token
+        #        "Authorization": "session xxxxx"  # token
+        "Authorization": "Bearer  xxxxx"  # token
+    }
     request = urllib.request.Request(url, data=json_dump, headers=headers, method="POST")
     try:
         with urllib.request.urlopen(request) as response:
