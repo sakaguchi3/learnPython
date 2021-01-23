@@ -3,7 +3,6 @@
 
 from __future__ import division, print_function, absolute_import, unicode_literals
 import os
-use1
 
 """
 class exercise
@@ -12,7 +11,6 @@ class exercise
 
 
 def exec():
-
     pass
 
 
